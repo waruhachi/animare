@@ -11,12 +11,12 @@ export async function animateThemeTransition(
 ): Promise<void> {
 	const { button, duration = 400 } = options;
 
-	if (!(document as any).startViewTransition) {
+	if (!document.startViewTransition) {
 		callback();
 		return;
 	}
 
-	await (document as any).startViewTransition?.(() => {
+	await document.startViewTransition?.(() => {
 		flushSync(() => {
 			callback();
 		});
