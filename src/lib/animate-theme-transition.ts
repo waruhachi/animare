@@ -5,14 +5,20 @@ export interface AnimationOptions {
 	duration?: number;
 }
 
+let isTransitioning = false;
+
 export async function animateThemeTransition(
 	callback: () => void,
 	options: AnimationOptions = {}
 ): Promise<void> {
+	if (isTransitioning) return;
+	isTransitioning = true;
+
 	const { button, duration = 400 } = options;
 
 	if (!document.startViewTransition) {
 		callback();
+		isTransitioning = false;
 		return;
 	}
 
@@ -52,4 +58,6 @@ export async function animateThemeTransition(
 			pseudoElement: '::view-transition-new(root)',
 		}
 	);
+
+	isTransitioning = false;
 }
