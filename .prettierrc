@@ -1,0 +1,55 @@
+{
+	"arrowParens": "always",
+	"bracketSpacing": true,
+	"endOfLine": "lf",
+	"htmlWhitespaceSensitivity": "css",
+	"insertPragma": false,
+	"singleAttributePerLine": true,
+	"bracketSameLine": false,
+	"jsxSingleQuote": true,
+	"printWidth": 80,
+	"proseWrap": "preserve",
+	"quoteProps": "as-needed",
+	"requirePragma": false,
+	"semi": true,
+	"singleQuote": true,
+	"tabWidth": 4,
+	"trailingComma": "es5",
+	"useTabs": true,
+	"embeddedLanguageFormatting": "auto",
+	"vueIndentScriptAndStyle": false,
+	"experimentalTernaries": true,
+	"importOrder": [
+		"^[./]",
+		"^@lib/(.*)$",
+		"^@utils/(.*)$",
+		"^@hooks/(.*)$",
+		"^@context/(.*)$",
+		"^@icons/(.*)$",
+		"^@ui/(.*)$",
+		"^@components/(.*)$",
+		"^@(.*)$",
+		"<THIRD_PARTY_MODULES>"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true,
+	"overrides": [
+		{
+			"files": "*.rs",
+			"options": {
+				"plugins": [
+					"./node_modules/prettier-plugin-rust"
+				]
+			}
+		},
+		{
+			"files": "*.tsx",
+			"options": {
+				"plugins": [
+					"prettier-plugin-tailwindcss",
+					"@trivago/prettier-plugin-sort-imports"
+				]
+			}
+		}
+	]
+}

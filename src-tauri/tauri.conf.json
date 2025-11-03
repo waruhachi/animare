@@ -1,0 +1,59 @@
+{
+	"$schema": "https://schema.tauri.app/config/2",
+	"productName": "animare",
+	"version": "0.1.0",
+	"identifier": "moe.waru.animare",
+	"build": {
+		"beforeDevCommand": "bun run dev",
+		"devUrl": "http://localhost:1420",
+		"beforeBuildCommand": "bun run build",
+		"frontendDist": "../dist",
+		"removeUnusedCommands": true
+	},
+	"app": {
+		"windows": [
+			{
+				"width": 1280,
+				"height": 720,
+				"title": "",
+				"titleBarStyle": "Overlay"
+			}
+		],
+		"security": {
+			"csp": null,
+			"pattern": {
+				"use": "brownfield"
+			}
+		}
+	},
+	"bundle": {
+		"active": true,
+		"targets": "all",
+		"icon": [
+			"icons/32x32.png",
+			"icons/128x128.png",
+			"icons/128x128@2x.png",
+			"icons/icon.icns",
+			"icons/icon.ico"
+		],
+		"createUpdaterArtifacts": true
+	},
+	"plugins": {
+		"updater": {
+			"windows": {
+				"installMode": "passive"
+			},
+			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDkyNzg0MDIyQjg3NjgxMjcKUldRbmdYYTRJa0I0a3UybHV0MU0vbXVjdGlzTlFKZlVGVzU4aXFNZEJQQWtoT2Q1SXJQUHhKaHUK",
+			"endpoints": [
+				"https://github.com/waruhachi/animare/releases/latest/download/latest.json"
+			]
+		},
+		"deep-link": {
+			"desktop": {
+				"schemes": [
+					"animare"
+				]
+			}
+		}
+	}
+}
