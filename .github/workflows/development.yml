@@ -68,6 +68,4 @@ jobs:
               if: success()
               with:
                   name: animare-${{ matrix.platform }}${{ matrix.args != '' && format('-{0}', matrix.args) || '' }}-${{ github.sha }}
-                  path: ${{ steps.tauri.outputs.artifactPaths }}
-                  if-no-files-found: error
-                  compression-level: 6
+                  path: ${{ join(fromJson(steps.tauri.outputs.artifactPaths), '\n') }}
