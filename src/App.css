@@ -62,6 +62,7 @@
 	--shadow-2xl: 1px 2px 5px 1px hsl(0 0% 0% / 0.15);
 	--tracking-normal: 0em;
 	--spacing: 0.25rem;
+	--titlebar-height: 2rem;
 }
 
 .dark {
@@ -181,14 +182,29 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-sidebar-primary text-foreground;
 	}
+
 	button:not(:disabled),
 	[role='button']:not(:disabled) {
 		cursor: pointer;
 	}
 	*[data-tauri-drag-region] {
 		app-region: drag;
+	}
+
+	* {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	*::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+	}
+	*::-webkit-scrollbar-thumb,
+	*::-webkit-scrollbar-track {
+		background: transparent;
+		border: none;
 	}
 }
 
@@ -265,4 +281,17 @@ h6 {
 #root,
 #__next {
 	isolation: isolate;
+}
+
+/*
+  ---break---
+*/
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
 }
