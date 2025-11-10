@@ -2,7 +2,7 @@ import { cn } from '@lib/utils';
 
 import * as React from 'react';
 
-function Titlebar({ className, ...props }: React.ComponentProps<'div'>) {
+export function Titlebar({ className, ...props }: React.ComponentProps<'div'>) {
 	return (
 		<div
 			data-tauri-drag-region
@@ -11,5 +11,3 @@ function Titlebar({ className, ...props }: React.ComponentProps<'div'>) {
 		></div>
 	);
 }
-
-export { Titlebar };
