@@ -182,7 +182,12 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-sidebar-primary text-foreground;
+		@apply bg-sidebar text-foreground;
+	}
+
+	html,
+	body {
+		overscroll-behavior-y: none;
 	}
 
 	button:not(:disabled),
@@ -281,17 +286,4 @@ h6 {
 #root,
 #__next {
 	isolation: isolate;
-}
-
-/*
-  ---break---
-*/
-
-@layer base {
-	* {
-		@apply border-border outline-ring/50;
-	}
-	body {
-		@apply bg-background text-foreground;
-	}
 }
