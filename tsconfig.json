@@ -27,14 +27,23 @@
 			"@/*": [
 				"./src/*"
 			],
+			"@api/*": [
+				"./src/api/*"
+			],
 			"@lib/*": [
 				"./src/lib/*"
+			],
+			"@types/*": [
+				"./src/types/*"
 			],
 			"@hooks/*": [
 				"./src/hooks/*"
 			],
 			"@context/*": [
 				"./src/context/*"
+			],
+			"@provider/*": [
+				"./src/provider/*"
 			],
 			"@components/*": [
 				"./src/components/*"
@@ -43,7 +52,7 @@
 				"./src/components/ui/*"
 			],
 			"@icons/*": [
-				"./src/components/ui/icons/*"
+				"./src/components/icons/*"
 			],
 		}
 	},
