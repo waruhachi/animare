@@ -1,6 +1,6 @@
 import App from './App';
 
-import { ThemeProvider } from '@components/theme-provider';
+import { ThemeProvider } from '@provider/theme-provider';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
