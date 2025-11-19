@@ -12,6 +12,7 @@ export default defineConfig(async () => ({
 		alias: {
 			'@': path.resolve(__dirname, './src'),
 			'@api': path.resolve(__dirname, './src/api'),
+			'@graphql': path.resolve(__dirname, './src/graphql'),
 			'@lib': path.resolve(__dirname, './src/lib'),
 			'@types': path.resolve(__dirname, './src/types'),
 			'@hooks': path.resolve(__dirname, './src/hooks'),

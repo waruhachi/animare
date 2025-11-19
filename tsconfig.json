@@ -30,6 +30,9 @@
 			"@api/*": [
 				"./src/api/*"
 			],
+			"@graphql/*": [
+				"./src/graphql/*"
+			],
 			"@lib/*": [
 				"./src/lib/*"
 			],
@@ -54,7 +57,14 @@
 			"@icons/*": [
 				"./src/components/icons/*"
 			],
-		}
+		},
+		/* codegen-graphql */
+		"plugins": [
+			{
+				"name": "@0no-co/graphqlsp",
+				"schema": "./src/graphql/anilist.graphql"
+			}
+		]
 	},
 	"include": [
 		"src"
