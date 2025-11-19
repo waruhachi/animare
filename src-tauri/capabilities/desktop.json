@@ -10,8 +10,12 @@
 		"linux"
 	],
 	"permissions": [
+		"core:default",
+		"store:default",
+		"opener:default",
 		"updater:default",
 		"deep-link:default",
+		"stronghold:default",
 		"core:app:allow-set-app-theme",
 		"core:window:allow-start-dragging",
 		{
