@@ -216,14 +216,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 		};
 	}, [checkStatus]);
 
-	const handleLogout = useCallback(async () => {
-		try {
-			await invoke('clear_anilist_access_token');
-		} catch (error) {
-			console.error('Logout failed:', error);
-		}
-	}, []);
-
 	const handleDevDialogCancel = useCallback(() => {
 		setDevDialogOpen(false);
 		setDevCode('');
@@ -298,17 +290,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 					{loggedIn === null ?
 						<div className='h-12 w-full animate-pulse rounded-xl bg-muted' />
 					: loggedIn ?
-						<NavUser
-							user={data.user}
-							onLogout={handleLogout}
-						/>
+						<NavUser />
 					:	<AniListLoginButton onLoginClick={handleLoginClick} />}
 				</SidebarFooter>
 			</Sidebar>
 			{isDevMode && (
 				<Dialog
 					open={isDevDialogOpen}
-					onOpenChange={(open) => {
+					onOpenChange={(open: any) => {
 						setDevDialogOpen(open);
 						if (!open) {
 							setDevCode('');
