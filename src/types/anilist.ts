@@ -46,7 +46,7 @@ export type Media = {
 		timeUntilAiring: number;
 		episode: number;
 	};
-	mediaListEntry: any;
+	mediaListEntry?: unknown;
 	siteUrl: string;
 	trailer: {
 		id: string;
@@ -76,5 +76,13 @@ export type Response = {
 export type SingleResponse = {
 	data: {
 		Media: Media;
+	};
+};
+
+export type AniListViewer = {
+	id: number;
+	name: string;
+	avatar: {
+		large: string;
 	};
 };
