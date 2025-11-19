@@ -1,5 +1,7 @@
 import { cn } from '@lib/utils';
 
+import { useSidebar } from '@hooks/useSidebar';
+
 import { Button } from '@ui/button';
 import { Input } from '@ui/input';
 import { Separator } from '@ui/separator';
@@ -13,7 +15,6 @@ import {
 import { Skeleton } from '@ui/skeleton';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@ui/tooltip';
 
-import { useSidebar } from '@/hooks/useSidebar';
 import { Slot } from '@radix-ui/react-slot';
 
 import { type VariantProps, cva } from 'class-variance-authority';

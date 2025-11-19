@@ -1,3 +1,5 @@
+import { useAuth } from '@context/auth-context';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@ui/avatar';
 import {
 	DropdownMenu,
@@ -14,6 +16,7 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from '@ui/sidebar';
+import { Skeleton } from '@ui/skeleton';
 
 import {
 	BadgeCheck,
@@ -23,17 +26,51 @@ import {
 	LogOut,
 	Sparkles,
 } from 'lucide-react';
+import { User } from 'lucide-react';
 
-export function NavUser({
-	user,
-}: {
-	user: {
-		name: string;
-		email: string;
-		avatar: string;
-	};
-}) {
+export function NavUser() {
 	const { isMobile } = useSidebar();
+	const { viewer, isLoggedIn, isLoading, login, logout } = useAuth();
+
+	if (isLoading) {
+		return (
+			<SidebarMenu>
+				<SidebarMenuItem>
+					<SidebarMenuButton
+						size='lg'
+						disabled
+					>
+						<Skeleton className='h-8 w-8 rounded-lg' />
+						<Skeleton className='h-4 w-20' />
+					</SidebarMenuButton>
+				</SidebarMenuItem>
+			</SidebarMenu>
+		);
+	}
+
+	if (!isLoggedIn) {
+		return (
+			<SidebarMenu>
+				<SidebarMenuItem>
+					<SidebarMenuButton
+						size='lg'
+						onClick={login}
+						className='justify-start'
+					>
+						<User className='h-4 w-4' />
+						<span>Login with AniList</span>
+					</SidebarMenuButton>
+				</SidebarMenuItem>
+			</SidebarMenu>
+		);
+	}
+
+	const initials = viewer!.name
+		.split(' ')
+		.map((n) => n[0])
+		.join('')
+		.toUpperCase()
+		.slice(0, 2);
 
 	return (
 		<SidebarMenu>
@@ -46,19 +83,19 @@ export function NavUser({
 						>
 							<Avatar className='h-8 w-8 rounded-lg'>
 								<AvatarImage
-									src={user.avatar}
-									alt={user.name}
+									src={viewer!.avatar.large}
+									alt={viewer!.name}
 								/>
-								<AvatarFallback className='rounded-lg'>
-									CN
+								<AvatarFallback className='rounded-lg bg-muted text-muted-foreground'>
+									{initials}
 								</AvatarFallback>
 							</Avatar>
 							<div className='grid flex-1 text-left text-sm leading-tight'>
 								<span className='truncate font-medium'>
-									{user.name}
+									{viewer!.name}
 								</span>
-								<span className='truncate text-xs'>
-									{user.email}
+								<span className='truncate text-xs opacity-50'>
+									AniList
 								</span>
 							</div>
 							<ChevronsUpDown className='ml-auto size-4' />
@@ -74,49 +111,49 @@ export function NavUser({
 							<div className='flex items-center gap-2 px-1 py-1.5 text-left text-sm'>
 								<Avatar className='h-8 w-8 rounded-lg'>
 									<AvatarImage
-										src={user.avatar}
-										alt={user.name}
+										src={viewer!.avatar.large}
+										alt={viewer!.name}
 									/>
 									<AvatarFallback className='rounded-lg'>
-										CN
+										{initials}
 									</AvatarFallback>
 								</Avatar>
 								<div className='grid flex-1 text-left text-sm leading-tight'>
 									<span className='truncate font-medium'>
-										{user.name}
+										{viewer!.name}
 									</span>
-									<span className='truncate text-xs'>
-										{user.email}
+									<span className='truncate text-xs opacity-50'>
+										AniList
 									</span>
 								</div>
 							</div>
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
-							<DropdownMenuItem>
-								<Sparkles />
-								Upgrade to Pro
+							<DropdownMenuItem onClick={() => {}}>
+								<Sparkles className='mr-2 h-4 w-4' />
+								<span>Upgrade to Pro</span>
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
-							<DropdownMenuItem>
-								<BadgeCheck />
-								Account
+							<DropdownMenuItem onClick={() => {}}>
+								<BadgeCheck className='mr-2 h-4 w-4' />
+								<span>Account</span>
 							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<CreditCard />
-								Billing
+							<DropdownMenuItem onClick={() => {}}>
+								<CreditCard className='mr-2 h-4 w-4' />
+								<span>Billing</span>
 							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<Bell />
-								Notifications
+							<DropdownMenuItem onClick={() => {}}>
+								<Bell className='mr-2 h-4 w-4' />
+								<span>Notifications</span>
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
-							<LogOut />
-							Log out
+						<DropdownMenuItem onClick={logout}>
+							<LogOut className='mr-2 h-4 w-4' />
+							<span>Log out</span>
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
